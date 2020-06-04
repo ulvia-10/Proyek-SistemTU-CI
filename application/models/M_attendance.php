@@ -95,13 +95,75 @@
         }
 
 
-        // 
-        /**
-         * 
-         *  1. Foreach / tampilkan data siswa 
-         *  2. Foreach data detail absen by id siswa (id_siswa didapatkan pada poin nomor 1)
-         *  3. Keterangan dia alpha ? iizzin ? sakit ?
-         * 
-         */
+        function getDetailInfoAbsen( $id_infoabsen ){
 
+            $dataInfoAbsen       = array();
+            $dataDetailKehadiran = array();
+
+            /**
+             * 1. Ambil data informasi absen berdasarkan id_infoabsen
+             * 2. Masukan data informasi absen ke dalam variabel $dataInfoAbsen 
+             * 3. Ambil data detail absen berdasarkan id_infoabsen 
+             * 4. Masukkan data detail absen ke dalam variabel $dataDetailKehadiran
+             */
+
+            // @TODO 1
+                // Query : SELECT * FROM informasi_absen WHERE id_infoabsen = '$id_infoabsen'
+
+                // opsi 1 
+                $ambilInfoAbsen = $this->db->query("SELECT * FROM informasi_absen WHERE id_infoabsen = '$id_infoabsen'")->row_array();
+
+                // opsi 2 
+                // $kondisi = array('id_infoabsen' => $id_infoabsen);
+                // $ambilInfoAbsen = $this->db->get_where('informasi_absen', $kondisi);
+
+                // return dalam bentuk data lebih dari 1
+                // ->result();            $row->kelas
+                // ->result_array();      $row['kelas']
+
+                // return dalam bentuk 1 data / 1 baris
+                // ->row();             $row->kelas
+                // ->row_array();       $row['kelas']
+            
+            // @TODO 2
+                // array_push( $dataInfoAbsen, "Ulvia"  );
+                // array_push( $dataInfoAbsen, "Tutik"  );
+                
+                $setDataInfoAbsen = array(
+
+                    'tanggal'   => $ambilInfoAbsen['tanggal'],
+                    'pengajar'  => $ambilInfoAbsen['nama_pengajar'],
+                    'kelas'     => $ambilInfoAbsen['kelas'],
+                    'jurusan'   => $ambilInfoAbsen['jurusan'],
+                );
+                array_push( $dataInfoAbsen, $setDataInfoAbsen );
+            /** */
+
+            // TODO 3
+                $SQL = "SELECT a.id_detailabsen, a.id_infoabsen, a.keterangan, b.id_siswa, b.nama 
+                        FROM detail_absen a, siswa b 
+                        WHERE a.id_siswa = b.id_siswa AND a.id_infoabsen = '$id_infoabsen' AND keterangan != 'H'";
+                $ambilDetailAbsen = $this->db->query( $SQL )->result();
+            /** */
+
+            // TODO 4
+                foreach( $ambilDetailAbsen AS $rowDetail ) {
+
+                    $setDetailAbsen = array(
+                        'id_siswa'  => $rowDetail->id_siswa,
+                        'nama'      => $rowDetail->nama,
+                        'keterangan'=> $rowDetail->keterangan
+                    );
+
+                    array_push( $dataDetailKehadiran, $setDetailAbsen );
+                }
+            /** */ 
+            
+            $output = array( $dataInfoAbsen, $dataDetailKehadiran );
+            // 0 = dataInfoAbsen | 1 = dataDetailKehadiran
+            
+            return $output;
+        
+        }
+            
     }

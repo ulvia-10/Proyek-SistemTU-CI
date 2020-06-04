@@ -18,21 +18,26 @@
             <th>No</th>    
             <th>Tanggal</th>    
             <th>Jurusan</th>    
-            <th>Pengajar</th>    
+            <th>Pengajar</th> 
             <th>Keterangan</th>    
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody style=" text-align: center";>
             <?php $nomor = 1; foreach( $dataAbsen AS $row ) { ?>
             <tr>
                 <td><?php echo $nomor; ?></td>
-                <td><?php echo date('d F Y', strtotime( $row['tanggal'] )) ?></td>
+                <td><?php echo date('d F Y', strtotime( $row['tanggal'] )) ?>
+                </td>
                 <td><?php echo $row['kelas'].' - '. $row['jurusan'] ?></td>
                 <td><?php echo $row['nama_pengajar'] ?></td>
                 <td>
                     <label for="">A : <strong><?php echo $row['alpha'] ?></strong></label> &emsp;|&emsp;
                     <label for="">I : <strong><?php echo $row['izin'] ?></strong></label> &emsp;|&emsp;
                     <label for="">S : <strong><?php echo $row['sakit'] ?></strong></label>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('attendance/viewDetailAbsensi/'. $row['id_infoabsen']) ?>"><i class="fa fa-info-circle" aria-hidden="true"></i> Detail</a>
                 </td>
             </tr>
             <?php $nomor++; } ?>

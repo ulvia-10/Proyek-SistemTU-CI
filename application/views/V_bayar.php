@@ -5,11 +5,12 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-laptop" aria-hidden="true"></i> Data Transaksi
+			<h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-laptop" aria-hidden="true"></i> Data
+				Transaksi
 			</h6>
 			<div class="row mt-4">
 				<div class="col-md-6">
-					<a href="<?=base_url();?>Pembayaran/tambah/" class="btn btn-warning"> <i class="fa fa-plus"
+					<a href="<?=base_url();?>Pembayaran/tambah/" class="btn btn-success btn-sm"> <i class="fa fa-plus"
 							aria-hidden="true"></i> Tambah Data </a>
 				</div>
 			</div>
@@ -23,10 +24,10 @@
 							<th>Tanggal Bayar</th>
 							<th>Kode transaksi</th>
 							<th>NISN</th>
-							<th>Qty</th>
-							<th>Harga SPP</th>
-							<th>Total Bayar</th>
 							<th>Nama</th>
+							<th>Harga SPP</th>
+							<th>Qty</th>
+							<th>Total Bayar</th>
 							<th>Status</th>
 						</tr>
 					</thead>
@@ -37,15 +38,16 @@
 							<td><?= $no++ ?></td>
 							<td width="25%">
 								<?php echo $row->tgl_bayar;?> <br>
-								<a href="<?php echo base_url('C_bayar/CetakKwitansi/'. $row->id_transaksi) ?>"><small>Cetak Laporan
+								<a href="<?php echo base_url('C_bayar/CetakKwitansi/'. $row->id_transaksi) ?>"><small>Cetak
+										Laporan
 										Pembayaran</small></a>
 							</td>
 							<td><?php echo $row->id_transaksi;?></td>
 							<td><?php echo $row->id_siswa;?></td>
-							<td><?php echo $row->qty_spp;?></td>
-							<td><?php echo $row->harga_spp;?></td>
-							<td><?php echo $row->total_bayar;?></td>
 							<td><?php echo $row->nama;?></td>
+							<td><?php echo $row->harga_spp;?></td>
+							<td><?php echo $row->qty_spp;?></td>
+							<td><?php echo $row->total_bayar;?></td>
 							<td><?php echo $row->status;?></td>
 						</tr>
 						<?php

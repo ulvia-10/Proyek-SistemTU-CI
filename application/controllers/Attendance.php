@@ -52,5 +52,23 @@
 
             $this->M_attendance->actAdvanceInsert();
         }
+
+
+
+        /** View detail absensi */
+        function viewDetailAbsensi( $id_infoabsen ){
+
+            
+            $data['title'] = 'SITU SMANSA';
+
+            $data['hasilDetail'] = $this->M_attendance->getDetailInfoAbsen( $id_infoabsen );
+            
+            /** Mengecek isi dari $data['hasilDetail] */
+            // print_r( $data['hasilDetail'] ); 
+
+            $this->load->view('admin/template/header_datatabels_pegawai',$data);
+            $this->load->view("admin/attendance/V_detail_attendance",$data);
+            $this->load->view('admin/template/footer_datatabels_pegawai');
+        }
         	
     }
