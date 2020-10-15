@@ -12,6 +12,7 @@
             // panggil model
             $this->load->model('Pembayaran_model');
             $this->load->model('Cetak_model_pembayaran');
+         
         }
 
         public function index()
@@ -95,5 +96,6 @@
             $data['transaksi']= $this->Pembayaran_model->getPembayaranByID($id);
             $this->load->view("admin/pembayaran/detailpembayaran",$data);
         }
+
     }
 ?>
