@@ -36,7 +36,7 @@
                 <td><?= $kpw['jurusan']; ?></td>
                 <td><?= $kpw['kelas']; ?></td>
                 <td><a href="<?= base_url();?>Siswa/detail/<?= $kpw['id_siswa'];?>"
-                class="badge badge-secondary"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+                class="badge badge-secondary btn-small"> <i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="<?= base_url();?>Siswa/edit/<?= $kpw['id_siswa'];?>"
                 class="badge badge-success "><i class="fa fa-edit "></i></a>
                 <a href="<?= base_url();?>Siswa/CetakSiswa/<?=$kpw['id_siswa'];?>"

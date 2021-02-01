@@ -34,7 +34,7 @@
                 <td><a href="<?= base_url();?>Pembayaran/detail/<?= $kpw['id_transaksi'];?>"
                 class="badge badge-danger  " style="margin-left: -2px; text-align: center;"> <i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="<?= base_url();?>Pembayaran/edit/<?= $kpw['id_transaksi'];?>"
-                class="badge badge-success  " style=" text-align: center;" > <i class="fas fa-edit "></i></a></td>
+                class="badge badge-success " style=" text-align: center;" > <i class="fas fa-edit "></i></a></td>
                 <?php } ?>
         </tbody>
       </table>
